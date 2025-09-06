@@ -1,10 +1,12 @@
-# Use Python 3.11 slim image
-FROM python:3.11-slim
+# Use Python 3.11 Alpine image (minimal, secure base image)
+FROM python:3.11-alpine
 
 # Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONPATH=/app
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    CELERY_BROKER_URL=redis://redis:6379/0 \
+    CELERY_RESULT_BACKEND=redis://redis:6379/0
 
 # Set work directory
 WORKDIR /app

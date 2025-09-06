@@ -47,4 +47,4 @@ def create_token_for_user(username: str) -> dict:
     return {
         "access_token": access_token,
         "token_type": "bearer"
-    }
+    } 
